@@ -1,10 +1,7 @@
-spring: 
+spring:
   application:
-    name: eureka
+    name: caliber-eureka
   cloud:
     config:
       uri: ${CALIBER_CONFIG_SERVER_URL}
       fail-fast: true
-security:
-  basic:
-    enabled: false
