@@ -13,16 +13,12 @@ phases:
       - apt-get update -y 
       - apt-get install -y openjdk-8-jdk 
       - apt-get install -y maven 
-      - echo downloading ojdbc6 ...
-      - aws s3 cp s3://sierra-bucket/ojdbc6.jar .
-      - echo installing ojdbc6 ...
-      - mvn install:install-file -Dfile=ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
   post_build: 
     commands: 
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - mvn deploy -Dmaven.test.skip=true -Ddockerfile.username=$USERNAME  -Ddockerfile.password=$PASSWORD
-      - echo '[{"name":"revaturesierra","imageUri":"revaturesierrra/caliber-eureka"}]' > image.json
+      - echo '[{"name":"CaliberEureka","imageUri":"revaturesierra/caliber-eureka"}]' > image.json
 artifacts:
   files: image.json
 
